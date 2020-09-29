@@ -38,14 +38,31 @@ es decir contiene los modelos con los datos en memoria
 # API del TAD Catalogo de accidentes
 # -----------------------------------------------------
 
+def newTree(cmpfunction):
+    return om.newMap(omaptype='BST',comparefunction=cmpfunction)
+
+def newList(cmpfunction,type='ARRAY_LIST'):
+    return lt.newList(type,cmpfunction)
+
+def newHash(numelements=503,type='CHAINING',loadFactor=2,comparefunction=None):
+    return m.newMap(numelements=numelements,maptype=type,loadfactor=loadFactor,comparefunction=comparefunction)
 
 # Funciones para agregar informacion al catalogo
 
+def addListAccident(lst,accident):
+    lt.addLast(lst,accident)
+
+def addTreeNode(tree,key,value):
+    om.put(tree,key,value)
 
 # ==============================
 # Funciones de consulta
 # ==============================
+def getTreeKey(tree,key):
+    return om.get(tree,key)
 
+def getTreeAllKeys(tree):
+    return om.keySet(tree)
 
 # ==============================
 # Funciones de Comparacion

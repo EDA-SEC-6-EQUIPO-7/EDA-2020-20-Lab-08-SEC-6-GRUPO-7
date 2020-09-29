@@ -38,7 +38,18 @@ operación seleccionada.
 # ___________________________________________________
 
 
-crimefile = 'crime-utf8.csv'
+# accidents_file = 'us_accidents_small.csv'
+accidents_file = 'us_accidents_dis_2019.csv'
+
+
+def printIndividualDayAccident(result):
+    print("Severidad de accidentes en:",date)
+    allAccidents = 0
+    for severity in result:
+        allAccidents += result[severity]
+        print(severity+":",result[severity])
+    print("Cantidad de accidentes:",allAccidents)
+
 
 # ___________________________________________________
 #  Menu principal
@@ -46,15 +57,12 @@ crimefile = 'crime-utf8.csv'
 
 
 def printMenu():
-    print("\n")
-    print("*******************************************")
-    print("Bienvenido")
-    print("1- Inicializar Analizador")
-    print("2- Cargar información de accidentes")
+    print("\nBienvenido")
+    print("1- Cargar información de accidentes")
+    print("2- Organizar información en un árbol")
     print("3- Requerimento 1")
     print("4- Requerimento 2")
-    print("0- Salir")
-    print("*******************************************")
+    print("0- Salir\n")
 
 
 """
@@ -65,17 +73,19 @@ while True:
     inputs = input('Seleccione una opción para continuar\n>')
 
     if int(inputs[0]) == 1:
-        print("\nInicializando....")
-        # cont es el controlador que se usará de acá en adelante
-        cont = controller.init()
+        print("\nCargando información de accidentes...")
+        # analyzer es el controlador que se usará de acá en adelante
+        analyzer = controller.init(accidents_file)
 
     elif int(inputs[0]) == 2:
-        print("\nCargando información de crimenes ....")
+        print("\nCargando información de accidentes ....")
+        controller.fillDataTree(analyzer)
 
     elif int(inputs[0]) == 3:
-        print("\nBuscando crimenes en un rango de fechas: ")
-
-
+        date = input('Por favor ingrese la fecha de la cuál desea buscar los accidentes: (YYYY-MM-DD)\n')
+        severity = controller.filterSeverityIndividual(analyzer['dateTree'],date)
+        printIndividualDayAccident(severity)
+        
     elif int(inputs[0]) == 4:
         print("\nRequerimiento No 1 del reto 3: ")
 

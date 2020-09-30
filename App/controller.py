@@ -74,8 +74,10 @@ def loadData(accidentsfile):
         p=1
         for accident in accident_data:
             if i%8787 == 0:
+            # if i%29743 == 0:
                 print(" " + str(p) + "%" + " completado",end='\r')
                 p+=1
+            # print(i,end='\r')
             model.addListAccident(lst,accident)
             i+=1
     print (" 100%" +" completado\n")

@@ -22,8 +22,8 @@
 
 import sys
 import config
-from DISClib.ADT import list as lt
 from App import controller
+import time
 assert config
 
 """
@@ -40,6 +40,7 @@ operación seleccionada.
 
 # accidents_file = 'us_accidents_small.csv'
 accidents_file = 'us_accidents_dis_2019.csv'
+# accidents_file = 'US_Accidents_Dec19.csv'
 
 
 def printIndividualDayAccident(result):
@@ -75,16 +76,28 @@ while True:
     if int(inputs[0]) == 1:
         print("\nCargando información de accidentes...")
         # analyzer es el controlador que se usará de acá en adelante
+        t1 = time.process_time()
         analyzer = controller.init(accidents_file)
+        t2 = time.process_time()
+        print("Tiempo de ejecución:",t2-t1,"segundos")
 
     elif int(inputs[0]) == 2:
         print("\nCargando información de accidentes ....")
+        t1 = time.process_time()
         controller.fillDataTree(analyzer)
+        t2 = time.process_time()
+        print("Tiempo de ejecución:",t2-t1,"segundos")
 
     elif int(inputs[0]) == 3:
         date = input('Por favor ingrese la fecha de la cuál desea buscar los accidentes: (YYYY-MM-DD)\n')
-        severity = controller.filterSeverityIndividual(analyzer['dateTree'],date)
-        printIndividualDayAccident(severity)
+        try:
+            t1 = time.process_time()
+            severity = controller.filterSeverityIndividual(analyzer['dateTree'],date)
+            t2 = time.process_time()
+            printIndividualDayAccident(severity)
+            print("Tiempo de ejecución:",t2-t1,"segundos")
+        except KeyError or TypeError:
+            print("No se encontró la llave")
         
     elif int(inputs[0]) == 4:
         print("\nRequerimiento No 1 del reto 3: ")

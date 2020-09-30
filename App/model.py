@@ -41,7 +41,7 @@ es decir contiene los modelos con los datos en memoria
 def newTree(cmpfunction):
     return om.newMap(omaptype='BST',comparefunction=cmpfunction)
 
-def newList(cmpfunction,type='ARRAY_LIST'):
+def newList(cmpfunction,type='SINGLE_LINKED'):
     return lt.newList(type,cmpfunction)
 
 def newHash(numelements=503,type='CHAINING',loadFactor=2,comparefunction=None):
@@ -50,7 +50,7 @@ def newHash(numelements=503,type='CHAINING',loadFactor=2,comparefunction=None):
 # Funciones para agregar informacion al catalogo
 
 def addListAccident(lst,accident):
-    lt.addLast(lst,accident)
+    lt.addFirst(lst,accident)
 
 def addTreeNode(tree,key,value):
     om.put(tree,key,value)

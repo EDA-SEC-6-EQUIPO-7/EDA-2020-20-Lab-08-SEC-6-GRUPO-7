@@ -24,7 +24,7 @@ import sys
 import config
 from App import controller
 import time
-assert config
+#assert config
 
 """
 La vista se encarga de la interacción con el usuario.
@@ -62,7 +62,6 @@ def printMenu():
     print("1- Cargar información de accidentes")
     print("2- Organizar información en un árbol")
     print("3- Requerimento 1")
-    print("4- Requerimento 2")
     print("0- Salir\n")
 
 

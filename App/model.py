@@ -31,15 +31,30 @@ assert config
 En este archivo definimos los TADs que vamos a usar,
 es decir contiene los modelos con los datos en memoria
 
-
 """
 
 # -----------------------------------------------------
 # API del TAD Catalogo de accidentes
 # -----------------------------------------------------
 
+def crimesSize(analyzer):
+    """
+    Número de crimes en el catago
+    """
+    return lt.size(analyzer['dateTree'])
+
+def indexHeight(analyzer):
+    """Numero de crimenes leido
+    """
+    return om.height(analyzer['dateTree'])
+
+def indexSize(analyzer):
+    """Numero de autores leido
+    """
+    return om.size(analyzer['dateTree'])
+
 def newTree(cmpfunction):
-    return om.newMap(omaptype='BST',comparefunction=cmpfunction)
+    return om.newMap(omaptype='RBT',comparefunction=cmpfunction)
 
 def newList(cmpfunction,type='SINGLE_LINKED'):
     return lt.newList(type,cmpfunction)
@@ -67,3 +82,5 @@ def getTreeAllKeys(tree):
 # ==============================
 # Funciones de Comparacion
 # ==============================
+
+

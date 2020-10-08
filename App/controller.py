@@ -24,7 +24,7 @@ import config as cf
 from App import model
 from DISClib.DataStructures import listiterator as it
 import datetime
-import csv
+import cs
 
 # from DISClib.ADT import orderedmap as om
 # from DISClib.ADT import map as m
@@ -56,7 +56,6 @@ def init(accidentsfile):
                 'rawAccidents': loadData(accidentsfile)}
     return analyzer
 
-
 # ___________________________________________________
 #  Funciones para la carga de datos y almacenamiento
 #  de datos en los modelos
@@ -82,7 +81,6 @@ def loadData(accidentsfile):
             i+=1
     print (" 100%" +" completado\n")
     return lst
-
 
 def fillDataTree(analyzer):
     iterator = it.newIterator(analyzer['rawAccidents'])
@@ -120,3 +118,23 @@ def filterSeverityIndividual(tree,date):
     for accident in result:
         severity[accident['Severity']] += 1
     return severity
+
+def crimesSize(analyzer):
+    """
+    Numero de crimenes leidos
+    """
+    return model.crimesSize(analyzer)
+
+def indexHeight(analyzer):
+    """
+    Altura del indice (arbol)
+    """
+    return model.indexHeight(analyzer)
+
+def indexSize(analyzer):
+    """
+    Numero de nodos en el arbol
+    """
+    return model.indexSize(analyzer)
+
+

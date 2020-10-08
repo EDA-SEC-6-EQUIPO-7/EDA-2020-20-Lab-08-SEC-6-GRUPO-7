@@ -37,11 +37,10 @@ operación seleccionada.
 #  Ruta a los archivos
 # ___________________________________________________
 
-
 # accidents_file = 'us_accidents_small.csv'
-accidents_file = 'us_accidents_dis_2019.csv'
-# accidents_file = 'US_Accidents_Dec19.csv'
-
+#accidents_file = 'us_accidents_dis_2019.csv'
+accidents_file = 'US_Accidents_Dec19.csv'
+#accidents_file = 'us_accidents_dis_2016.csv'
 
 def printIndividualDayAccident(result):
     print("Severidad de accidentes en:",date)
@@ -51,11 +50,9 @@ def printIndividualDayAccident(result):
         print(severity+":",result[severity])
     print("Cantidad de accidentes:",allAccidents)
 
-
 # ___________________________________________________
 #  Menu principal
 # ___________________________________________________
-
 
 def printMenu():
     print("\nBienvenido")
@@ -63,7 +60,6 @@ def printMenu():
     print("2- Organizar información en un árbol")
     print("3- Requerimento 1")
     print("0- Salir\n")
-
 
 """
 Menu principal
@@ -86,6 +82,8 @@ while True:
         controller.fillDataTree(analyzer)
         t2 = time.process_time()
         print("Tiempo de ejecución:",t2-t1,"segundos")
+        print('Altura del arbol: ' + str(controller.indexHeight(analyzer)))
+        print('Elementos en el arbol: ' + str(controller.indexSize(analyzer)))
 
     elif int(inputs[0]) == 3:
         date = input('Por favor ingrese la fecha de la cuál desea buscar los accidentes: (YYYY-MM-DD)\n')
@@ -104,3 +102,4 @@ while True:
     else:
         sys.exit(0)
 sys.exit(0)
+

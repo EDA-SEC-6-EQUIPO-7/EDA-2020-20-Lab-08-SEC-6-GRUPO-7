@@ -37,9 +37,9 @@ operación seleccionada.
 #  Ruta a los archivos
 # ___________________________________________________
 
-# accidents_file = 'us_accidents_small.csv'
-#accidents_file = 'us_accidents_dis_2019.csv'
-accidents_file = 'US_Accidents_Dec19.csv'
+#accidents_file = 'us_accidents_small.csv'
+accidents_file = 'us_accidents_dis_2019.csv'
+#accidents_file = 'US_Accidents_Dec19.csv'
 #accidents_file = 'us_accidents_dis_2016.csv'
 
 def printIndividualDayAccident(result):
